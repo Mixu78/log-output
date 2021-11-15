@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: dwk-material-ingress
+  name: log-output-ingress
 spec:
   rules:
   - http:
@@ -13,3 +13,10 @@ spec:
             name: log-output-svc
             port:
               number: 2222
+      - path: /pingpong
+        pathType: Prefix
+        backend:
+          service:
+            name: log-output-svc
+            port:
+              number: 2223

@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  log-output:
+    build: .
+    image: mixu78/log-output:1.09

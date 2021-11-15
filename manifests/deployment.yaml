@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: log-output
-          image: mixu78/log_output:1.07
+          image: mixu78/log-output:1.09

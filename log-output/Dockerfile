@@ -6,7 +6,7 @@ COPY package-lock.json .
 RUN adduser -S appuser
 RUN npm install --production
 
-COPY *.js .
+COPY main.js .
 
 USER appuser
 

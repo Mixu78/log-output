@@ -17,6 +17,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: log-output-svc
+            name: ping-pong-svc
             port:
               number: 2223

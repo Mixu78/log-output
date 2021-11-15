@@ -2,5 +2,8 @@ version: '3'
 
 services:
   log-output:
-    build: .
-    image: mixu78/log-output:1.09
+    build: ./log-output
+    image: mixu78/log-output:${VERSION}
+  ping-pong:
+    build: ./ping-pong
+    image: mixu78/ping-pong:${VERSION}

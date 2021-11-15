@@ -11,7 +11,3 @@ spec:
       port: 2222
       protocol: TCP
       targetPort: 3000
-    - name: ping-pong
-      port: 2223
-      protocol: TCP
-      targetPort: 3001

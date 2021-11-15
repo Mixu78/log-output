@@ -12,6 +12,18 @@ spec:
       labels:
         app: log-output
     spec:
+      volumes:
+        - name: hash
+          emptyDir: {}
       containers:
-        - name: log-output
-          image: mixu78/log-output:1.09
+        - name: log-output-hash
+          image: mixu78/log-output-hash:1.10
+          volumeMounts:
+            - name: hash
+              mountPath: /usr/src/log/files
+
+        - name: log-output-log
+          image: mixu78/log-output-log:1.10
+          volumeMounts:
+            - name: hash
+              mountPath: /usr/src/log/files

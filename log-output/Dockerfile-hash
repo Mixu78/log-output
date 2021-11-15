@@ -1,13 +1,15 @@
 FROM node:14.18.1-alpine
 
+WORKDIR /usr/src/log
+
 COPY package.json .
 COPY package-lock.json .
 
 RUN adduser -S appuser
 RUN npm install --production
 
-COPY main.js .
+COPY hash-gen.js .
 
 USER appuser
 
-CMD ["node", "main.js"]
+CMD ["node", "hash-gen.js"]

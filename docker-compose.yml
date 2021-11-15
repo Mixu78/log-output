@@ -1,9 +1,16 @@
 version: '3'
 
 services:
-  log-output:
-    build: ./log-output
-    image: mixu78/log-output:${VERSION}
+  log-output-hash:
+    build:
+      context: ./log-output
+      dockerfile: Dockerfile-hash
+    image: mixu78/log-output-hash:${VERSION}
+  log-output-log:
+    build:
+      context: ./log-output
+      dockerfile: Dockerfile-log
+    image: mixu78/log-output-log:${VERSION}
   ping-pong:
     build: ./ping-pong
     image: mixu78/ping-pong:${VERSION}

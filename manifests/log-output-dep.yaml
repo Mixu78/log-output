@@ -14,16 +14,17 @@ spec:
     spec:
       volumes:
         - name: hash
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: log-pv-claim
       containers:
         - name: log-output-hash
-          image: mixu78/log-output-hash:1.10
+          image: mixu78/log-output-hash:1.11
           volumeMounts:
             - name: hash
               mountPath: /usr/src/log/files
 
         - name: log-output-log
-          image: mixu78/log-output-log:1.10
+          image: mixu78/log-output-log:1.11
           volumeMounts:
             - name: hash
               mountPath: /usr/src/log/files

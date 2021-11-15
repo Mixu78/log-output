@@ -8,7 +8,8 @@ const app = express();
 const getStatus = () => {
 	try {
 		const hashStr = fs.readFileSync("./files/hash").toString();
-		return hashStr;
+		const pongs = fs.readFileSync("./files/pingpong").toString();
+		return `${hashStr}\nPings / Pongs: ${pongs}`;
 	} catch {
 		return "Could not read hash";
 	}

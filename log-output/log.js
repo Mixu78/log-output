@@ -10,13 +10,14 @@ const getStatus = () => {
 		const hashStr = fs.readFileSync("./files/hash").toString();
 		const pongs = fs.readFileSync("./files/pingpong").toString();
 		return `${hashStr}\nPings / Pongs: ${pongs}`;
-	} catch {
+	} catch (e) {
+		console.warn(e);
 		return "Could not read hash";
 	}
 }
 
 app.get("/status", (req, res) => {
-	res.send(getStatus());
+	res.send(getStatus().replace("\n", "<br>"));
 })
 
 app.listen(PORT);

@@ -11,8 +11,9 @@ const printUUID = () => {
 	setTimeout(printUUID, 5000);
     try {
         fs.writeFileSync("./files/hash", lastPrint);
-    } catch {
-        console.warn(`Failed to write hash! CWD ${__dirname}`)
+    } catch (e) {
+        console.warn(`Failed to write hash!`);
+        console.warn(e);
     }
 };
 

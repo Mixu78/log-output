@@ -12,6 +12,8 @@ spec:
       labels:
         app: log-output
     spec:
+      securityContext:
+        fsGroup: 1000
       volumes:
         - name: hash
           persistentVolumeClaim:
@@ -21,10 +23,10 @@ spec:
           image: mixu78/log-output-hash:1.11
           volumeMounts:
             - name: hash
-              mountPath: /usr/src/log/files
+              mountPath: /usr/src/app/files
 
         - name: log-output-log
           image: mixu78/log-output-log:1.11
           volumeMounts:
             - name: hash
-              mountPath: /usr/src/log/files
+              mountPath: /usr/src/app/files

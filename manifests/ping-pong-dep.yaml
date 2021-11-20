@@ -12,15 +12,6 @@ spec:
       labels:
         app: ping-pong
     spec:
-      securityContext:
-        fsGroup: 1000
-      volumes:
-        - name: pingpong
-          persistentVolumeClaim:
-            claimName: log-pv-claim
       containers:
         - name: ping-pong
-          image: mixu78/ping-pong:1.11
-          volumeMounts:
-            - name: pingpong
-              mountPath: /usr/src/app/files
+          image: mixu78/ping-pong:2.01

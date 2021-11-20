@@ -8,19 +8,12 @@ const app = express();
 let count = 0;
 
 app.get("/pingpong", (req, res) => {
-    res.send(`pong ${count}`)
-    try {
-        fs.writeFileSync("./files/pingpong", count.toString());
-    } catch {
-        console.warn("Failed to write pingpong count!");
-    }
-    count++;
+	count++;
+	res.send(`pong ${count}`)
 })
 
-try {
-    fs.writeFileSync("./files/pingpong", "0");
-} catch {
-    console.warn("Failed to write pingpong count!");
-}
+app.get("/status", (req, res) => {
+	res.send(count.toString());
+})
 
 app.listen(PORT);

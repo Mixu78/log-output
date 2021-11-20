@@ -16,17 +16,16 @@ spec:
         fsGroup: 1000
       volumes:
         - name: hash
-          persistentVolumeClaim:
-            claimName: log-pv-claim
+          emptyDir: {}
       containers:
         - name: log-output-hash
-          image: mixu78/log-output-hash:1.11
+          image: mixu78/log-output-hash:2.01
           volumeMounts:
             - name: hash
               mountPath: /usr/src/app/files
 
         - name: log-output-log
-          image: mixu78/log-output-log:1.11
+          image: mixu78/log-output-log:2.01
           volumeMounts:
             - name: hash
               mountPath: /usr/src/app/files

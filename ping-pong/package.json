@@ -1,5 +1,5 @@
 {
-	"name": "devops-log_output",
+	"name": "ping-pong",
 	"version": "1.0.0",
 	"devDependencies": {
 		"@types/express": "^4.17.13",

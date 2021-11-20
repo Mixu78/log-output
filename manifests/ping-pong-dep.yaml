@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
         - name: ping-pong
-          image: mixu78/ping-pong:2.01
+          image: mixu78/ping-pong:2.06

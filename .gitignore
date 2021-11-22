@@ -1,2 +1,4 @@
 node_modules/
 files/
+secret.yaml
+key.txt

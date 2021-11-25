@@ -48,6 +48,10 @@ app.get("/pingpong", (req, res) => {
 	);
 });
 
+app.get("/", (req, res) => {
+	res.sendStatus(200);
+})
+
 app.get("/status", (req, res) => {
 	res.send(count.toString());
 });

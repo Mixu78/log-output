@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ping-pong
+  name: ping-pong-svc
   namespace: log-output
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: ping-pong
   ports:
     - name: ping-pong
-      port: 2223
+      port: 80
       protocol: TCP
       targetPort: 3001

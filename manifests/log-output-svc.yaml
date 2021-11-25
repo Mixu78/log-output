@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: log-output
+  name: log-output-svc
   namespace: log-output
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: log-output
   ports:
     - name: log-output
-      port: 2222
+      port: 80
       protocol: TCP
       targetPort: 3000

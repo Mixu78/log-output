@@ -20,13 +20,13 @@ spec:
           emptyDir: {}
       containers:
         - name: log-output-hash
-          image: mixu78/log-output-hash:3.01
+          image: mixu78/log-output-hash:3.02.2
           volumeMounts:
             - name: hash
               mountPath: /usr/src/app/files
 
         - name: log-output-log
-          image: mixu78/log-output-log:3.01
+          image: mixu78/log-output-log:3.02.2
           env:
             - name: MESSAGE
               valueFrom:

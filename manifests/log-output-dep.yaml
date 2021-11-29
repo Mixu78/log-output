@@ -20,13 +20,17 @@ spec:
           emptyDir: {}
       containers:
         - name: log-output-hash
-          image: mixu78/log-output-hash:3.02.2
+          image: mixu78/log-output-hash:3.09
           volumeMounts:
             - name: hash
               mountPath: /usr/src/app/files
+          resources:
+            limits:
+              cpu: "5m"
+              memory: "100Mi"
 
         - name: log-output-log
-          image: mixu78/log-output-log:3.02.2
+          image: mixu78/log-output-log:3.09
           env:
             - name: MESSAGE
               valueFrom:
@@ -36,3 +40,7 @@ spec:
           volumeMounts:
             - name: hash
               mountPath: /usr/src/app/files
+          resources:
+            limits:
+              cpu: "20m"
+              memory: "200Mi"

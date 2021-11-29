@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ping-pong
-          image: mixu78/ping-pong:3.02.2
+          image: mixu78/ping-pong:3.09
           env:
             - name: POSTGRES_HOST
               value: postgres-svc
@@ -28,3 +28,7 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: POSTGRES_PASSWORD
+          resources:
+            limits:
+              cpu: "20m"
+              memory: "400Mi"

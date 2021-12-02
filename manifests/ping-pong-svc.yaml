@@ -4,7 +4,7 @@ metadata:
   name: ping-pong-svc
   namespace: log-output
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: ping-pong
   ports:

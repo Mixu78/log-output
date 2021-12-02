@@ -1,4 +1,3 @@
-const fs = require("fs");
 const express = require("express");
 const { Pool, PoolClient } = require("pg");
 
@@ -38,7 +37,7 @@ const initDB = (client) =>
 app.get("/pingpong", (req, res) => {
 	pool.connect().then((client) =>
 		client
-			.query("UPDATE pongs SET count = $1 WHERE id = 0", [count+1])
+			.query("UPDATE pongs SET count = $1 WHERE id = 0", [count + 1])
 			.then(() => {
 				count++;
 				res.send(`pong ${count}`);
@@ -48,9 +47,14 @@ app.get("/pingpong", (req, res) => {
 	);
 });
 
-app.get("/", (req, res) => {
-	res.sendStatus(200);
-})
+app.get("/healthz", (req, res) => {
+	pool.connect()
+		.then((c) => {
+			res.sendStatus(200);
+			c.release();
+		})
+		.catch(() => res.sendStatus(500));
+});
 
 app.get("/status", (req, res) => {
 	res.send(count.toString());

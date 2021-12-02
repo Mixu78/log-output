@@ -20,7 +20,7 @@ spec:
           emptyDir: {}
       containers:
         - name: log-output-hash
-          image: mixu78/log-output-hash:3.09
+          image: mixu78/log-output-hash:4.01
           volumeMounts:
             - name: hash
               mountPath: /usr/src/app/files
@@ -30,7 +30,7 @@ spec:
               memory: "100Mi"
 
         - name: log-output-log
-          image: mixu78/log-output-log:3.09
+          image: mixu78/log-output-log:4.01
           env:
             - name: MESSAGE
               valueFrom:
@@ -44,3 +44,9 @@ spec:
             limits:
               cpu: "20m"
               memory: "200Mi"
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 3000

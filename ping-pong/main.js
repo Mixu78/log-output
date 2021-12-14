@@ -1,7 +1,7 @@
 const express = require("express");
 const { Pool, PoolClient } = require("pg");
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const pool = new Pool({
 	host: process.env.POSTGRES_HOST || "localhost",

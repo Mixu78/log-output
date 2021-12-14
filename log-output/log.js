@@ -2,7 +2,7 @@ const fs = require("fs");
 const express = require("express");
 const { default: axios } = require("axios");
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -11,7 +11,7 @@ const getStatus = async () => {
 		const message = process.env.MESSAGE || "No message set :(";
 		const hashStr = fs.readFileSync("./files/hash").toString();
 		const pongs = await axios
-			.get("http://ping-pong-svc:80/status")
+			.get("http://ping-pong.log-output.svc.cluster.local:80/status")
 			.then((res) => res.data);
 		return `${message}\n${hashStr}\nPings / Pongs: ${pongs}`;
 	} catch (e) {
@@ -22,7 +22,7 @@ const getStatus = async () => {
 
 app.get("/healthz", (req, res) => {
 	axios
-		.get("http://ping-pong-svc:80/healthz")
+		.get("http://ping-pong.log-output.svc.cluster.local:80/healthz")
 		.then(() => res.sendStatus(200))
 		.catch(() => res.sendStatus(500));
 });
